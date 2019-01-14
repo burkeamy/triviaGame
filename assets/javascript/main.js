@@ -84,45 +84,58 @@ let runningQuestionIndex = 0;
 
 function renderQuestion() {
     let q = questions[runningQuestionIndex];
-    document.getElementById("timer").innerHTML = setInterval(timer, 5000);;
     document.getElementById("question").innerHTML = q.question;
     document.getElementById("choiceA").innerHTML = q.choiceA;
     document.getElementById("choiceB").innerHTML = q.choiceB;
     document.getElementById("choiceC").innerHTML = q.choiceC;
     document.getElementById("choiceD").innerHTML = q.choiceD;
-    //Timer = setInterval(counter, 5000);
+    document.getElementById("timer").innerHTML = setInterval(renderQuestion, 5000);
+    //this function is supposed to set the timer for 5 seconds and cycle throught the 8 questions
 }
 
 function checkAnswer(answer) {
-    addEventListener("click",checkAnswer); 
-    if(questions[rnningQuestionIndex].correct == answer) {
-        correct++;
-        console.log("correct");
-    } else {
-        incorrect++;
-        console.log("wrong");
+    addEventListener("click",checkAnswer);
+    addEventListener("click",clearInterval());
+    addEventListener("click", renterQuestion());
+    function answerPic(qImg) {
+        setTimeout(answerPic, 2000);
+        document.getElementById("qimg").innerHTML = q.qImg;
+        clearTimeout();
+        //this function is supposed to show the answer imagae for 2 seconds after the usser clicked on an answer
     }
-    if (runningQuesitonIndex < lastQuestionIndex) {
-        count = 0;
-        runningQuesitonIndex++;
-        renderQuestion();
+
+    if(questions[runningQuestionIndex].correct == answer) {
+        correct++;
+        //this is supposed to check for correct ansowers and add them to the correct var
+    } 
+    else if(questions[runningQuestionIndex].correct != answer){
+        incorrect++;
+        //this is supoosed to check for wrong answers and add them to the incorrect var
     } else {
-        clearInterval(Timer);
+        unanswered++;
+        //this is supoosed to take everyting else and add it to the unanswered var
+    }
+    if (runningQuestionIndex < lastQuestionIndex) {
+        runningQuestionIndex++;
+        clearInterval();
+        renderQuestion();
+        //this is supposed to clear the timer and send the user to the next question if it is not the last question
+    } else {
+        document.write("correct").correct;
+        document.write("incorrect").incorrect;
+        document.write("unanswered").unanswered;
+        //this is supposed to display the score if the last question has been answered
+        document.getElementById("start").style.display = "block";
+        //this is supposed to make the start button reappear and restart the quiz
     }
 }
 
 function startQuiz(){
-addEventListener("click",startQuiz); 
+    addEventListener("click",startQuiz); 
     document.getElementById("start").style.display = "none";
     document.getElementById("quiz").style.display = "block";
     document.getElementById("choices").style.display = "block";
-    
     renderQuestion()
-    
-}
+    }
+// this function is supposed to start the quiz with the press of the button
 
-function scoreRender() {
-    console.log(score)
-    document.write(score);
-}
-//})
