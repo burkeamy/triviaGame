@@ -1,16 +1,15 @@
-var start = document.getElementById("start");
+var start;
 var quiz;
-var qImg = document.getElementById("qImg");
-var qImg = document.getElementById("qImg");
-var counter = "0:00";
-var timGauge = document.getElementById("timeGauge");
+var qImg;
 var choiceA;
-var choiceB = document.getElementById("choiceB");
-var choiceC = document.getElementById("choiceC");
-var choiceD = document.getElementById("choiceD");
+var choiceB;
+var choiceC;
+var choiceD;
+var answer;
+var correct = 0;
+var incorrect = 0;
+var timer = "0:00";
 
-//document.ready(function() 
-document.write(counter);
 
 let questions = [{
         question: "What is the North Carolina State Flower?",
@@ -83,26 +82,24 @@ let questions = [{
 let lastQuestionIndex = questions.length-1;
 let runningQuestionIndex = 0;
 
-function renderQuestion(){
+function renderQuestion() {
     let q = questions[runningQuestionIndex];
-    document.getElementById("#quiz").innerHTML = questions[0];
-    document.write("A" + q.choiceA);
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
-    runningQuestionIndex = 0;
-    renderQuestion();
-    runningQuestionIndex++;
+    document.getElementById("timer").innerHTML = setInterval(timer, 5000);;
+    document.getElementById("question").innerHTML = q.question;
+    document.getElementById("choiceA").innerHTML = q.choiceA;
+    document.getElementById("choiceB").innerHTML = q.choiceB;
+    document.getElementById("choiceC").innerHTML = q.choiceC;
+    document.getElementById("choiceD").innerHTML = q.choiceD;
+    //Timer = setInterval(counter, 5000);
 }
 
-let score = 0;
-let timer;
-
 function checkAnswer(answer) {
+    addEventListener("click",checkAnswer); 
     if(questions[rnningQuestionIndex].correct == answer) {
-        score++;
+        correct++;
         console.log("correct");
     } else {
+        incorrect++;
         console.log("wrong");
     }
     if (runningQuesitonIndex < lastQuestionIndex) {
@@ -111,22 +108,21 @@ function checkAnswer(answer) {
         renderQuestion();
     } else {
         clearInterval(Timer);
-        scoreRender();
     }
 }
 
-//start.addEventListener(onClick, start);
-
-function startQuiz() {
-    //start.style.display = "none";
-    //counterRender();
-    //Timer = setInterval(counter, 5000);
-    //progressRender();
-    renderQuestion();
-    quiz.style.display = "block";
+function startQuiz(){
+addEventListener("click",startQuiz); 
+    document.getElementById("start").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    document.getElementById("choices").style.display = "block";
+    
+    renderQuestion()
+    
 }
 
 function scoreRender() {
+    console.log(score)
     document.write(score);
 }
 //})
