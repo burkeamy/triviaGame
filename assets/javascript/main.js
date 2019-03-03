@@ -8,8 +8,9 @@ var choiceD;
 var answer;
 var correct = 0;
 var incorrect = 0;
-var timer = "0:00";
-
+//var timer = "0:00";
+var time;
+var intervalId;
 
 let questions = [{
         question: "What is the North Carolina State Flower?",
@@ -82,27 +83,44 @@ let questions = [{
 let lastQuestionIndex = questions.length-1;
 let runningQuestionIndex = 0;
 
+function timer(){
+    time = 6;
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+}
+
+function decrement() {
+    time --;
+    $("#timer").text(time);
+    if (!time) {
+        runningQuestionIndex++;
+        renderQuestion();
+    }
+}
+
 function renderQuestion() {
+    timer();
     let q = questions[runningQuestionIndex];
     document.getElementById("question").innerHTML = q.question;
     document.getElementById("choiceA").innerHTML = q.choiceA;
     document.getElementById("choiceB").innerHTML = q.choiceB;
     document.getElementById("choiceC").innerHTML = q.choiceC;
     document.getElementById("choiceD").innerHTML = q.choiceD;
-    document.getElementById("timer").innerHTML = setInterval(renderQuestion, 5000);
+    //document.getElementById("timer").innerHTML = setInterval(renderQuestion, 5000);
+
     //this function is supposed to set the timer for 5 seconds and cycle throught the 8 questions
 }
 
 function checkAnswer(answer) {
     addEventListener("click",checkAnswer);
     addEventListener("click",clearInterval());
-    addEventListener("click", renterQuestion());
-    function answerPic(qImg) {
+    addEventListener("click", renderQuestion());
+    /*function answerPic(qImg) {
         setTimeout(answerPic, 2000);
-        document.getElementById("qimg").innerHTML = q.qImg;
-        clearTimeout();
+        document.getElementById("qimg").innerHTML = q.qImg;*/
+        //clearTimeout();
         //this function is supposed to show the answer imagae for 2 seconds after the usser clicked on an answer
-    }
+    //}
 
     if(questions[runningQuestionIndex].correct == answer) {
         correct++;
@@ -117,8 +135,9 @@ function checkAnswer(answer) {
     }
     if (runningQuestionIndex < lastQuestionIndex) {
         runningQuestionIndex++;
-        clearInterval();
-        renderQuestion();
+        timer();
+       // clearInterval();
+        //renderQuestion();
         //this is supposed to clear the timer and send the user to the next question if it is not the last question
     } else {
         document.write("correct").correct;
