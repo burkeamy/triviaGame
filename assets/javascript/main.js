@@ -19,7 +19,7 @@ let questions = [{
         choiceB: "Sunflower",
         choiceC: "Purple Coneflower",
         choiceD: "Clover",
-        corrrect: "A"
+        correct: "A"
     },{
         question: "Which bulb is great to plant if you have a large deer population?",
         imgSrc: "assets/images/daffodils-in-a-vase.jpg",
@@ -84,7 +84,7 @@ let lastQuestionIndex = questions.length-1;
 let runningQuestionIndex = 0;
 
 function timer(){
-    time = 6;
+    time = 15;
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
 }
@@ -100,6 +100,7 @@ function decrement() {
 
 function renderQuestion() {
     timer();
+    console.log("CQno:"+runningQuestionIndex)
     let q = questions[runningQuestionIndex];
     document.getElementById("question").innerHTML = q.question;
     document.getElementById("choiceA").innerHTML = q.choiceA;
@@ -110,27 +111,44 @@ function renderQuestion() {
 
     //this function is supposed to set the timer for 5 seconds and cycle throught the 8 questions
 }
-
+// $("#choices") // select the radio by its id
+// .on("change", function () { // bind a function to the change event
+//   if ($("input[type='radio'].blankRadio1").is(":checked")) {
+//     var val = $("input[type='radio'].blankRadio1:checked").val(); 
+//     alert(val);
+//   }
+//     // check if the radio is checked
+//   })
 function checkAnswer(answer) {
-    addEventListener("click",checkAnswer);
-    addEventListener("click",clearInterval());
-    addEventListener("click", renderQuestion());
+    console.log("in answers")
+    console.log("Que index:"+runningQuestionIndex);
+    document.getElementById("qimg").innerHTML = '<img src="'+questions[runningQuestionIndex].imgSrc+'">';
+   // $('#theDiv').prepend('<img id="theImg" src="theImg.png" />')
+  //  addEventListener("click",checkAnswer);
+    //addEventListener("click",clearInterval());
+   // addEventListener("click", renderQuestion());
     /*function answerPic(qImg) {
         setTimeout(answerPic, 2000);
         document.getElementById("qimg").innerHTML = q.qImg;*/
         //clearTimeout();
         //this function is supposed to show the answer imagae for 2 seconds after the usser clicked on an answer
     //}
-
+console.log("usersAnswer"+answer)
+console.log(questions[runningQuestionIndex].correct)
     if(questions[runningQuestionIndex].correct == answer) {
+     
         correct++;
+        console.log(correct)
         //this is supposed to check for correct ansowers and add them to the correct var
     } 
     else if(questions[runningQuestionIndex].correct != answer){
+
         incorrect++;
+        console.log(incorrect)
         //this is supoosed to check for wrong answers and add them to the incorrect var
     } else {
         unanswered++;
+        console.log(unanswered)
         //this is supoosed to take everyting else and add it to the unanswered var
     }
     if (runningQuestionIndex < lastQuestionIndex) {

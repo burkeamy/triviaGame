@@ -1,2 +1,2 @@
 # triviaGame
-trivia game for javascript assignment 2
+This is a North Carolina plant triva game. I uses JavaScript, set Time Out, bootstrap, CSS and HTML. Originaly created as an assignment for UNC coding boot camp.
