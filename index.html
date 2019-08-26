@@ -6,10 +6,12 @@
   <title>Amy's trivia game</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
+    <img class = "border" src="assets/images/flowerCorner.png" alt="flowers">
     <div class="col-md-6">
       <h1>North Carolina Plant Trivia</h1>
       <div id="start">
@@ -32,24 +34,14 @@
     <div class="col-md=6">
       <div id="choices" style="display: none">
         <div class="form-check">
-          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1"
-            value="option1" aria-label="...">
-          <div class="choice" id="choiceA" onclick="checkAnswer('A')">A</div>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1"
-            value="option1" aria-label="...">
-          <div class="choice" id="choiceB" onclick="checkAnswer('B')">B</div>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1"
-            value="option1" aria-label="...">
-          <div class="choice" id="choiceC" onclick="checkAnswer('C')">C</div>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1"
-            value="option1" aria-label="...">
-          <div class="choice" id="choiceD" onclick="checkAnswer('D')">C</div>
+          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1">
+            <div class="choice" id="choiceA" onclick="checkAnswer('A')">A</div>
+          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1">
+            <div class="choice" id="choiceB" onclick="checkAnswer('B')">B</div>
+          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1">
+            <div class="choice" id="choiceC" onclick="checkAnswer('C')">C</div>
+          <input class="form-check-input position-static" type="radio" name="blankRadio" class="blankRadio1">  
+            <div class="choice" id="choiceD" onclick="checkAnswer('D')">C</div>
         </div>
         <div id="qimg"></div>
       </div>

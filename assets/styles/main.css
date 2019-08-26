@@ -1,7 +1,15 @@
 body {
     background-color: lightgreen;
+    margin: 5%;
 }
 
 h1 {
     color: green;
+    font-family: 'Satisfy', cursive;
+}
+
+.border {
+    float: right;
+    height: 75%;
+    border: none;
 }

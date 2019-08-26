@@ -84,7 +84,7 @@ let lastQuestionIndex = questions.length-1;
 let runningQuestionIndex = 0;
 
 function timer(){
-    time = 15;
+    time = 6;
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
 }
@@ -100,13 +100,15 @@ function decrement() {
 
 function renderQuestion() {
     timer();
-    console.log("CQno:"+runningQuestionIndex)
+    console.log("On question:"+runningQuestionIndex)
     let q = questions[runningQuestionIndex];
     document.getElementById("question").innerHTML = q.question;
     document.getElementById("choiceA").innerHTML = q.choiceA;
     document.getElementById("choiceB").innerHTML = q.choiceB;
     document.getElementById("choiceC").innerHTML = q.choiceC;
     document.getElementById("choiceD").innerHTML = q.choiceD;
+
+    $("#choice").onclick(console.log(choice))
     //document.getElementById("timer").innerHTML = setInterval(renderQuestion, 5000);
 
     //this function is supposed to set the timer for 5 seconds and cycle throught the 8 questions
